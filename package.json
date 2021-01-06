@@ -1,0 +1,37 @@
+{
+  "name": "trybe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "jest": "^26.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.15",
+    "next": "10.0.4",
+    "next-images": "^1.6.2",
+    "pg": "^8.5.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "styled-components": "^5.2.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/knex": "^0.16.1",
+    "@types/node": "^14.14.20",
+    "@types/react": "^17.0.0",
+    "@types/styled-components": "^5.1.7",
+    "@types/uuid": "^8.3.0",
+    "babel-plugin-inline-react-svg": "^1.1.2",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  }
+}
