@@ -6,15 +6,59 @@ export enum Currency {
     CAD = "CAD"
 }
 
+export enum CurrencyDescription {
+    USD = "United States Dollar",
+    BTC = "Bitcoin",
+    BRL = "Brazilian Real",
+    EUR = "Euro",
+    CAD = "Canadian Dollar"
+}
+
 
 export class BitcoinPrice {
+    private description: string;
     constructor(
         private price: number,
-        private currency: Currency
-    ) {}
+        private currency: Currency,
+    ) {
+        this.description = BitcoinPrice.stringToCurrencyDescription(
+            BitcoinPrice.currencyToString(this.currency)
+        )
+    }
 
     public getPrice(): number { return this.price }
-    public getCurrency(): Currency { return this.currency }
+    public getDescription(): string { return BitcoinPrice.currencyDescriptionToString(this.description) }
+    public getCurrency(): string { return BitcoinPrice.currencyToString(this.currency) }
+
+    public static stringToCurrencyDescription(value: string): CurrencyDescription {
+        switch(value) {
+            case "BTC":
+                return CurrencyDescription.BTC;
+            case "BRL":
+                return CurrencyDescription.BRL;
+            case "EUR":
+                return CurrencyDescription.EUR;
+            case "CAD":
+                return CurrencyDescription.CAD;
+            default:
+                return CurrencyDescription.USD;
+        }
+    }
+
+    public static currencyDescriptionToString(value: string): string {
+        switch(value) {
+            case CurrencyDescription.BTC:
+                return "Bitcoin";
+            case CurrencyDescription.BRL:
+                return "Brazilian Real";
+            case CurrencyDescription.EUR:
+                return "Euro";
+            case CurrencyDescription.CAD:
+                return "Canadian Dollar";
+            default:
+                return "United States Dollar";
+        }
+    }
 
     public static stringToCurrency(value: string): Currency {
         switch(value) {
