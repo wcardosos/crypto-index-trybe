@@ -9,7 +9,7 @@ export class Authenticator {
         const token = jwt.sign(
             {
                 id: input.id,
-                role: input.role
+                email: input.email
             },
             "desafio-fullstack-trybe-01-21",
             { expiresIn: Authenticator.EXPIRES_IN }
@@ -23,7 +23,7 @@ export class Authenticator {
         const payload = jwt.verify(token, "desafio-fullstack-trybe-01-21") as any;
         const result: IAuthenticationData = {
             id: payload.id,
-            role: payload.role
+            email: payload.email
         };
         
         return result;

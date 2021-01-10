@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "migrate": "npx knex migrate:latest --knexfile knexfile.ts migrate:latest",
+    "test": "jest",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
