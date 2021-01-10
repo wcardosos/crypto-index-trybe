@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { GetBitcoinPriceUseCase } from './GetBitcoinPriceUseCase';
-import { BitcoinPrice } from '../../entities/BitcoinPrice';
 import { IBaseController } from '../IBaseController';
 
 export class GetBitcoinPriceController implements IBaseController {
