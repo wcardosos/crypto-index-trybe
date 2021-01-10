@@ -4,6 +4,7 @@ import { IdGenerator } from '../../tools/IdGenerator';
 import { ILoginUserDTO } from './ILoginUserDTO';
 import { PostgresUsersRepository } from '../../repositories/Users/PostgresUsersRepository';
 import { InvalidParameterError } from '../../errors/InvalidParameterError';
+import { UnauthorizedError } from '../../errors/UnauthorizedError';
 
 export class LoginUserUseCase {
     constructor(
@@ -22,12 +23,12 @@ export class LoginUserUseCase {
 
         const user = await this.usersRepository.findByEmail(email);
 
-        if (!user) throw new InvalidParameterError("Email não cadastrado");
+        if (!user) throw new UnauthorizedError("Email não cadastrado");
 
         if (!await this.hashManager.compare(
             unhashedPassword, 
             user.getPassword()
-        )) throw new InvalidParameterError("Senha incorreta");
+        )) throw new UnauthorizedError("Senha incorreta");
 
         const token = this.authenticator.generateToken({
             id: user.getId(),

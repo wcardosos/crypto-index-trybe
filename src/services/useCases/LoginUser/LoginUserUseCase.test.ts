@@ -1,4 +1,5 @@
 import { User } from '../../entities/User';
+import { InvalidParameterError } from '../../errors/InvalidParameterError';
 import { UnauthorizedError } from '../../errors/UnauthorizedError';
 import { LoginUserUseCase } from './LoginUserUseCase';
 
@@ -25,8 +26,8 @@ describe("Testes de login de usuários", () => {
             });
         } catch (error) {
             expect(error.message).toBe("Entrada vazia");
-            expect(error.code).toBe(401);
-            expect(error).toBeInstanceOf(UnauthorizedError);
+            expect(error.code).toBe(422);
+            expect(error).toBeInstanceOf(InvalidParameterError);
         }
     });
     
@@ -40,8 +41,8 @@ describe("Testes de login de usuários", () => {
             });
         } catch (error) {
             expect(error.message).toBe("Email vazio");
-            expect(error.code).toBe(401);
-            expect(error).toBeInstanceOf(UnauthorizedError);
+            expect(error.code).toBe(422);
+            expect(error).toBeInstanceOf(InvalidParameterError);
         }
     });
 
