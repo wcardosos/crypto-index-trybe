@@ -1,4 +1,6 @@
-export enum Currency {
+import { InvalidParameterError } from "../errors/InvalidParameterError";
+
+export enum ICurrency {
     USD = "USD",
     BTC = "BTC",
     BRL = "BRL",
@@ -6,7 +8,7 @@ export enum Currency {
     CAD = "CAD"
 }
 
-export enum CurrencyDescription {
+export enum ICurrencyDescription {
     USD = "United States Dollar",
     BTC = "Bitcoin",
     BRL = "Brazilian Real",
@@ -19,7 +21,7 @@ export class BitcoinPrice {
     private description: string;
     constructor(
         private price: number,
-        private currency: Currency,
+        private currency: ICurrency,
     ) {
         this.description = BitcoinPrice.stringToCurrencyDescription(
             BitcoinPrice.currencyToString(this.currency)
@@ -30,63 +32,71 @@ export class BitcoinPrice {
     public getDescription(): string { return BitcoinPrice.currencyDescriptionToString(this.description) }
     public getCurrency(): string { return BitcoinPrice.currencyToString(this.currency) }
 
-    public static stringToCurrencyDescription(value: string): CurrencyDescription {
+    public static stringToCurrencyDescription(value: string): ICurrencyDescription {
         switch(value) {
+            case "USD":
+                return ICurrencyDescription.USD;
             case "BTC":
-                return CurrencyDescription.BTC;
+                return ICurrencyDescription.BTC;
             case "BRL":
-                return CurrencyDescription.BRL;
+                return ICurrencyDescription.BRL;
             case "EUR":
-                return CurrencyDescription.EUR;
+                return ICurrencyDescription.EUR;
             case "CAD":
-                return CurrencyDescription.CAD;
+                return ICurrencyDescription.CAD;
             default:
-                return CurrencyDescription.USD;
+                throw new InvalidParameterError("Moeda inválida");
         }
     }
 
     public static currencyDescriptionToString(value: string): string {
         switch(value) {
-            case CurrencyDescription.BTC:
+            case ICurrencyDescription.USD:
+                return "United States Dollar";
+            case ICurrencyDescription.BTC:
                 return "Bitcoin";
-            case CurrencyDescription.BRL:
+            case ICurrencyDescription.BRL:
                 return "Brazilian Real";
-            case CurrencyDescription.EUR:
+            case ICurrencyDescription.EUR:
                 return "Euro";
-            case CurrencyDescription.CAD:
+            case ICurrencyDescription.CAD:
                 return "Canadian Dollar";
             default:
-                return "United States Dollar";
+                throw new InvalidParameterError("Moeda inválida");
         }
     }
 
-    public static stringToCurrency(value: string): Currency {
+    public static stringToCurrency(value: string): ICurrency {
         switch(value) {
+            case "USD":
+                return ICurrency.USD;
             case "BTC":
-                return Currency.BTC;
+                return ICurrency.BTC;
             case "BRL":
-                return Currency.BRL;
+                return ICurrency.BRL;
             case "EUR":
-                return Currency.EUR;
+                return ICurrency.EUR;
             case "CAD":
-                return Currency.CAD;
+                return ICurrency.CAD;
             default:
-                return Currency.USD;
+                throw new InvalidParameterError("Moeda inválida");
         }
     }
 
     public static currencyToString(value: string): string {
         switch(value) {
-            case Currency.BTC:
+            case ICurrency.USD:
+                return "USD";
+            case ICurrency.BTC:
                 return "BTC";
-            case Currency.BRL:
+            case ICurrency.BRL:
                 return "BRL";
-            case Currency.EUR:
+            case ICurrency.EUR:
                 return "EUR";
-            case Currency.CAD:
+            case ICurrency.CAD:
                 return "CAD";
             default:
-                return "USD";
+                throw new InvalidParameterError("Moeda inválida");
         }
     }
 }
