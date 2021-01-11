@@ -1,4 +1,4 @@
-import { BitcoinPrice, Currency } from '../../entities/BitcoinPrice';
+import { BitcoinPrice, ICurrency } from '../../entities/BitcoinPrice';
 import { InvalidParameterError } from '../../errors/InvalidParameterError';
 import { GetBitcoinPriceUseCase } from './GetBitcoinPriceUseCase';
 
@@ -36,7 +36,7 @@ describe("Testes para pegar a cotação do Bitcoin em outras moedas", () => {
 
             expect(prices).toHaveLength(3);
             expect(prices[0]).toBeInstanceOf(BitcoinPrice);
-            expect(prices[0].getCurrency()).toBe(Currency.BRL);
+            expect(prices[0].getCurrency()).toBe(ICurrency.BRL);
             expect(prices[0].getPrice()).toBe(
                 bitcoinDollarQuote * currencies.BRL
             );
@@ -52,7 +52,7 @@ describe("Testes para pegar a cotação do Bitcoin em outras moedas", () => {
 
             expect(prices).toHaveLength(3);
             expect(prices[1]).toBeInstanceOf(BitcoinPrice);
-            expect(prices[1].getCurrency()).toBe(Currency.EUR);
+            expect(prices[1].getCurrency()).toBe(ICurrency.EUR);
             expect(prices[1].getPrice()).toBe(
                 bitcoinDollarQuote * currencies.EUR
             );
@@ -68,7 +68,7 @@ describe("Testes para pegar a cotação do Bitcoin em outras moedas", () => {
 
             expect(prices).toHaveLength(3);
             expect(prices[2]).toBeInstanceOf(BitcoinPrice);
-            expect(prices[2].getCurrency()).toBe(Currency.CAD);
+            expect(prices[2].getCurrency()).toBe(ICurrency.CAD);
             expect(prices[2].getPrice()).toBe(
                 bitcoinDollarQuote * currencies.CAD
             );
