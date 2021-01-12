@@ -7,8 +7,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Crypto Index - Início</title>
       </Head>
       <Header />
       <h1>Desafio Fullstack Trybe</h1>

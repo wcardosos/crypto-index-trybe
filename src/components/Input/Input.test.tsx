@@ -6,7 +6,7 @@ import Input from './index';
 
 describe("Testes do componente Input", () => {
     test("Input renderizado", () => {
-        const { getByPlaceholderText } = render(<Input type={"text"} placeholder={"Teste"} onChange={() => jest.fn()} width={"medium" } />);
+        const { getByPlaceholderText } = render(<Input value={""} type={"text"} placeholder={"Teste"} onChange={() => jest.fn()} width={"medium" } />);
 
         const inputElement = getByPlaceholderText(/Teste/);
 
@@ -15,9 +15,12 @@ describe("Testes do componente Input", () => {
     });
 
     test("Input ao digitar", () => {
-        const onChange = jest.fn();
+        let value = "";
+        const onChange = jest.fn((event) => {
+            value = event.target.value
+        });
 
-        const { getByPlaceholderText } = render(<Input type={"text"} placeholder={"Teste"} onChange={onChange} width={"medium"} />);
+        const { getByPlaceholderText } = render(<Input value={value} type={"text"} placeholder={"Teste"} onChange={onChange} width={"medium"} />);
 
         const inputElement = getByPlaceholderText(/Teste/);
 

@@ -5,12 +5,12 @@ import theme from '../theme';
 
 export const ButtonContainer = styled.button`
     width: ${(props: ButtonProps) => props.small ? "100px" : "300px"};
-    height: ${(props: ButtonProps) => props.small ? "35px" : "60px"};
+    height: ${(props: ButtonProps) => props.small ? "25px" : "40px"};
     text-align: center;
     background-color: ${(props: ButtonProps) => props.outline ? theme.colors.background : theme.colors.primary};;
     color: ${(props: ButtonProps) => props.outline ? theme.colors.primary : theme.colors.background};
     border: ${(props: ButtonProps) => props.outline ? "1px solid " + theme.colors.primary : 'none'};
-    border-radius: ${(props: ButtonProps) => props.small ? '5px' : '15px'};
+    border-radius: ${(props: ButtonProps) => props.small ? '5px' : '10px'};
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
     outline: none;

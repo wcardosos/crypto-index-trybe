@@ -14,7 +14,7 @@ export const InputContainer = styled.input`
             return "400px";
         }
     }};
-    height: 30px;
+    height: 35px;
     padding: 0 10px;
     border: 1px solid ${theme.colors.primary};
     border-radius: 5px;
