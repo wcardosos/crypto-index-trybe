@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "migrate": "npx knex migrate:latest --knexfile knexfile.ts migrate:latest",
-    "test": "jest",
+    "coverage": "jest --coverage",
+    "test": "jest --watch",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
@@ -24,6 +25,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@testing-library/jest-dom": "^5.11.8",
+    "@testing-library/react": "^11.2.3",
     "@types/bcryptjs": "^2.4.2",
     "@types/jest": "^26.0.19",
     "@types/jsonwebtoken": "^8.5.0",
@@ -32,6 +36,7 @@
     "@types/react": "^17.0.0",
     "@types/styled-components": "^5.1.7",
     "@types/uuid": "^8.3.0",
+    "babel-jest": "^26.6.3",
     "babel-plugin-inline-react-svg": "^1.1.2",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
