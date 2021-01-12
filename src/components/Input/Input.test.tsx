@@ -6,7 +6,7 @@ import Input from './index';
 
 describe("Testes do componente Input", () => {
     test("Input renderizado", () => {
-        const { getByPlaceholderText } = render(<Input type={"text"} placeholder={"Teste"} size={"medium"} />);
+        const { getByPlaceholderText } = render(<Input type={"text"} placeholder={"Teste"} onChange={() => jest.fn()} width={"medium" } />);
 
         const inputElement = getByPlaceholderText(/Teste/);
 
@@ -15,7 +15,9 @@ describe("Testes do componente Input", () => {
     });
 
     test("Input ao digitar", () => {
-        const { getByPlaceholderText } = render(<Input type={"text"} placeholder={"Teste"} size={"medium"} />);
+        const onChange = jest.fn();
+
+        const { getByPlaceholderText } = render(<Input type={"text"} placeholder={"Teste"} onChange={onChange} width={"medium"} />);
 
         const inputElement = getByPlaceholderText(/Teste/);
 
@@ -25,6 +27,7 @@ describe("Testes do componente Input", () => {
             }
         })
 
+        expect(onChange).toHaveBeenCalled();
         expect(inputElement.value).toBe("Testando input");
     });
 })
