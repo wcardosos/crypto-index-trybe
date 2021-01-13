@@ -15,12 +15,19 @@ export const InputContainer = styled.input`
         }
     }};
     height: 35px;
-    padding: 0 10px;
+    text-align: ${(props: InputProps) => props.width === "small" ? "center" : "none"};
+    padding: ${(props: InputProps) => props.width === "small" ? "0" : "0 10px"};
     border: 1px solid ${theme.colors.primary};
     border-radius: 5px;
     outline: none;
 
     :focus {
         border: 2px solid ${theme.colors.primaryDark};
+    }
+
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0
     }
 `

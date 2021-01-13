@@ -8,14 +8,15 @@ import Back from '../../assets/back-button.svg';
 export interface HeaderProps {
     center?: boolean,
     back?: boolean,
+    onClick?: any
 }
 
-const Header: React.FC<HeaderProps> = ({ center, back }) =>  {
+const Header: React.FC<HeaderProps> = ({ center, back, onClick }) =>  {
     return (
         <HeaderContainer data-testid={"header"} center={center}>
             {back ? <Back data-testid={"back-button"} /> : null}
             {!back ? <CryptoIndexLogo data-testid={"logo"} /> : null}
-            {!center && !back ? <Button text={"Sair"} onClick={() => console.log("Saindo")} small outline/> : null}
+            {!center && !back ? <Button text={"Sair"} onClick={onClick} small outline/> : null}
         </HeaderContainer>
     )
 }
