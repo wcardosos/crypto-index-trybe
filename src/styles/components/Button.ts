@@ -5,7 +5,7 @@ import theme from '../theme';
 
 export const ButtonContainer = styled.button`
     width: ${(props: ButtonProps) => props.small ? "100px" : "300px"};
-    height: ${(props: ButtonProps) => props.small ? "25px" : "40px"};
+    height: ${(props: ButtonProps) => props.small ? "30px" : "40px"};
     text-align: center;
     background-color: ${(props: ButtonProps) => props.outline ? theme.colors.background : theme.colors.primary};;
     color: ${(props: ButtonProps) => props.outline ? theme.colors.primary : theme.colors.background};

@@ -16,3 +16,12 @@ export const HeaderContainer = styled.header`
         }
     }};
 `
+
+export const BackButton = styled.button`
+    width: 32px;
+    height: 32px;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+`

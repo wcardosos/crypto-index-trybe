@@ -8,3 +8,8 @@ export const Main = styled.main`
     align-items: center;
     justify-content: space-around;
 `
+
+export const PageTitle = styled.h1`
+    align-self: flex-start;
+    padding-top: 10px;
+`

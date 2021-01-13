@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import theme from '../theme';
 
-export const PageTitle = styled.h1`
-    align-self: flex-start;
-    padding-top: 10px;
-`
-
 export const BitcoinQuotesContainer = styled.section`
     width: 40%;
     height: 60%;

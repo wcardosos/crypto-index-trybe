@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { BitcoinQuotesContainer, BitcoinQuote, PageTitle, OtherCurrenciesContainer } from '../styles/pages/Home';
+import { BitcoinQuotesContainer, BitcoinQuote, OtherCurrenciesContainer } from '../styles/pages/Home';
 
 import Head from 'next/head'
-import { Main } from '../styles/cryptoIndexStyles';
+import { Main, PageTitle } from '../styles/cryptoIndexStyles';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import axios from 'axios';
@@ -45,6 +45,10 @@ const Home: React.FC<HomeProps> = ({ bitcoinQuotes }) => {
         sessionStorage.removeItem("token");
 
         router.push("/login")
+    }
+
+    const onClickUpdate = () => {
+        router.push("/update");
     }
 
     return (
@@ -106,7 +110,7 @@ const Home: React.FC<HomeProps> = ({ bitcoinQuotes }) => {
                                 />
                             </BitcoinQuote>
                         </OtherCurrenciesContainer>
-                        <Button text={"Atualizar valor monetário"} onClick={() => {}} />
+                        <Button text={"Atualizar valor monetário"} onClick={onClickUpdate} />
                     </>
                 </BitcoinQuotesContainer>
             </Main>
