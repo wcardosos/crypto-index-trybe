@@ -4,7 +4,7 @@ export const FormContainer = styled.form`
     width: 60%;
     height: 40%;
     display: grid;
-    grid-template-rows: 35% 65%;
+    grid-template-rows: 50% 50%;
     align-items: center;
     justify-items: center;
 `

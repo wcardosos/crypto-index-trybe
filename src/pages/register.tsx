@@ -16,10 +16,12 @@ import axios from 'axios';
 const Login: React.FC = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [ confirmPassword, setConfirmPassword ] = useState("");
     const [ logged, setLogged ] = useState(false);
 
     const onChangeEmail = event => setEmail(event.target.value);
     const onChangePassword = event => setPassword(event.target.value);
+    const onChangeConfirmPassword = event => setConfirmPassword(event.target.value);
 
     const router = useRouter();
 
@@ -32,10 +34,15 @@ const Login: React.FC = () => {
         }
     }, [logged])
 
-    const onClickLogin = async (event) => {
+    const onClickRegister = async (event) => {
         event.preventDefault();
+        if (password !== confirmPassword) {
+            alert("Senhas não estão iguais");
+            return
+        }
+
         try {
-            const response = await axios.post("/api/login", {
+            const response = await axios.post("/api/register", {
                 email,
                 password
             });
@@ -47,8 +54,6 @@ const Login: React.FC = () => {
         }
     }
 
-    const onClickRegister = () => router.push("/register");
-
     const main = logged ? 
         <div>Carregando ...</div> : (
         <>
@@ -57,9 +62,9 @@ const Login: React.FC = () => {
                 <InputsFormContainer>
                     <Input value={email} type={"email"} placeholder={"Email"} onChange={onChangeEmail} width={"large"} />
                     <Input value={password} type={"password"} placeholder={"Senha"} onChange={onChangePassword} width={"large"} />
+                    <Input value={confirmPassword} type={"password"} placeholder={"Confirmar senha"} onChange={onChangeConfirmPassword} width={"large"} />
                 </InputsFormContainer>
-                <Button text={"Entrar"} onClick={onClickLogin} />
-                <strong onClick={onClickRegister} style={{ cursor: 'pointer' }}>Criar conta</strong>
+                <Button text={"Entrar"} onClick={onClickRegister} />
             </FormContainer>
         </>
     )
