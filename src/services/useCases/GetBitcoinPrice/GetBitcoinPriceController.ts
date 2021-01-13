@@ -2,6 +2,7 @@ import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { GetBitcoinPriceUseCase } from './GetBitcoinPriceUseCase';
 import { IBaseController } from '../IBaseController';
+import { Authenticator } from '../../tools/Authenticator';
 
 export class GetBitcoinPriceController implements IBaseController {
     constructor(
@@ -10,6 +11,10 @@ export class GetBitcoinPriceController implements IBaseController {
 
     public async handle(request: NextApiRequest, response: NextApiResponse): Promise<void> {
         try {
+            // Autenticação
+            const token: string = request.headers.authorization as string;
+            Authenticator.getData(token);
+        
             const coinDeskResponse = await axios.get("https://api.coindesk.com/v1/bpi/currentprice/BTC.json");
     
             const bitcoinQuotes = coinDeskResponse.data;

@@ -18,7 +18,7 @@ export class Authenticator {
         return token;
     }
 
-    public getData(token: string): IAuthenticationData {
+    public static getData(token: string): IAuthenticationData {
         // Em condições normais a chave JWT é colocada em variáveis ambiente
         const payload = jwt.verify(token, "desafio-fullstack-trybe-01-21") as any;
         const result: IAuthenticationData = {

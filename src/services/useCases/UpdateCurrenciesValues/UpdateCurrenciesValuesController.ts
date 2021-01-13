@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { UpdateCurrenciesValuesUseCase } from './UpdateCurrenciesValuesUseCase';
 import { IBaseController } from '../IBaseController';
+import { Authenticator } from '../../tools/Authenticator';
 
 export class UpdateCurrenciesValuesController implements IBaseController {
     constructor(
@@ -9,6 +10,9 @@ export class UpdateCurrenciesValuesController implements IBaseController {
 
     public async handle(request: NextApiRequest, response: NextApiResponse): Promise<void> {
         try {
+            const token: string = request.headers.authorization as string;
+            Authenticator.getData(token);
+            
             const { currency, value } = request.body;
 
             await this.updateCurrenciesValuesUseCase.execute({
